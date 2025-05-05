@@ -4,7 +4,7 @@ const path = require("path");
 const { conn, gfs } = require("../utils/filedb");
 
 const storage = new GridFsStorage({
-  url: process.env.MONGO_URI,
+  url: "mongodb+srv://yerramsettibindusai19:Bindu123@cluster0.xjrefhi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
   file: (req, file) => {
     try {
       // you can customize filename here
@@ -27,6 +27,6 @@ const storage = new GridFsStorage({
 
 const multer = require("multer");
 const storage1 = multer.memoryStorage();
-const upload = multer({ storage1 });
+const upload = multer({ storage });
 
-module.exports = upload;
+module.exports = { upload };
