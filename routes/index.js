@@ -8,7 +8,7 @@ const { upload } = require("../utils/upload");
 
 router.post("/login", userController.login);
 router.post("/signup", userController.signup);
-router.get("/papers/fetch", auth, PaperController.fetchAll);
+router.get("/papers/fetch", PaperController.fetchAll);
 router.get("/file/:fileId", FileController.downloadFile);
 router.post("/upload", auth, upload().single("pdf"), FileController.uploadFile);
 router.get("/files", auth, FileController.fetchAllUserFiles);
@@ -16,7 +16,7 @@ router.delete("/file/:fileId", auth, FileController.deleteFile); // Delete a fil
 router.get("/files/region/", FileController.fetchAllFilesByRegion); // Fetch files by region
 router.post("/history/", auth, userController.addToHistory); // Add to history
 router.get("/history/", auth, userController.fetchHistory); // Fetch history
-router.get("/user/", auth, userController.fetchUser); // Fetch user details
+router.get("/user/", userController.fetchUser); // Fetch user details
 router.patch("/user/", auth, userController.updateUser); // Update user details
 
 module.exports = router;
